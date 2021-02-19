@@ -68,3 +68,54 @@ puts
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ido de caracteres extraños"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ nota.to_f} / estudiante['notas'].length >= 7)}
+
+)
+
+
