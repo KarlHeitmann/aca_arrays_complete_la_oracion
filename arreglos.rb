@@ -20,12 +20,17 @@ lista_del_curso = [
 # TODO: Hacer que aca imprima solamente el nombre del estudiante
 print lista_del_curso
 puts
+lista_del_curso.each do |element|
+  puts element['nombre']
+  puts "_______________"
+end
+lista_del_curso.each { |element| puts element['nombre'] }
 # FIN TODO
 puts
 
 puts "Escoja un nombre para extraerlo del arreglo. HINT: Utilice gets, y recuerde limpiar lo obtenido de caracteres extraños"
 # TODO: COMPLETAR
-nombre = 'Pili' # XXX <------ Modificar acá
+nombre = gets.chomp
 # FIN TODO
 
 puts "Nombre escogido: #{nombre}"
@@ -33,19 +38,31 @@ puts
 
 # TODO:
 estudiante = lista_del_curso[4] # XXX <------- Modificar acá
-# FIN TODO
+# estudiante = lista_del_curso.filter do |estudiante|
+#   estudiante['nombre'] == nombre
+# end
 
+# NOTA: filter devuelve siempre un array
+estudiante = lista_del_curso.filter { |estudiante| estudiante['nombre'] == nombre }[0]
+
+# FIN TODO
 print estudiante
+
 puts
 
 # TODO: Mostrar el promedio de notas del estudiante
 promedio = 0  # XXX <-------------- Modificar acá
+suma_notas = estudiante['notas'].inject { |nota, suma| suma += nota.to_f }
+puts suma_notas / estudiante['notas'].length
 puts promedio
 # FIN TODO
 
 # TODO: Mostrar todos los estudiantes que hayan aprobado (promedio de notas mayor a 7)
 
-aprobados = [] # XXX <--------------------- Modificar acá
+aprobados = lista_del_curso.filter {|estudiante| (estudiante['notas'].inject {|nota, suma| suma += nota.to_f} / estudiante['notas'].length >= 7)}
+# aprobados = lista_del_curso.filter do |estudiante|
+#   (estudiante['notas'].inject {|nota, suma| suma += nota.to_f} / estudiante['notas'].length >= 7)
+# end
 print aprobados
 puts
 
